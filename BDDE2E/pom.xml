@@ -9,17 +9,17 @@
 		<java.version>1.8</java.version>
 		<junit.version>4.13.1</junit.version>
 		<cucumber.version>4.2.0</cucumber.version>
-        <cucumber-picocontainer.version>4.2.0</cucumber-picocontainer.version>
+		<cucumber-picocontainer.version>4.2.0</cucumber-picocontainer.version>
 		<maven.compiler.version>3.8.1</maven.compiler.version>
-		<maven.surefire.version>2.22.2</maven.surefire.version>
+		<maven.surefire.version>3.0.0-M1</maven.surefire.version>
 	</properties>
 	<dependencies>
 		<dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>${cucumber-picocontainer.version}</version>
-            <scope>test</scope>
-        </dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber-picocontainer.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -53,17 +53,24 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>${maven.compiler.version}</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<compilerArgument>-Werror</compilerArgument>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
-				<version>3.0.0-M1</version> <configuration> <suiteXmlFiles> <suiteXmlFile>testing.xml</suiteXmlFile> 
-				</suiteXmlFiles> </configuration> </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<useUnlimitedThreads>true</useUnlimitedThreads>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

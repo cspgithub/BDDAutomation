@@ -1,4 +1,4 @@
-package stepDefinitions;
+package parallel;
 
 import cucumber.TestContext;
 import cucumber.api.java.en.Then;

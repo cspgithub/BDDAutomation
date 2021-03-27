@@ -1,5 +1,6 @@
 package managers;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import enums.DriverType;
 import enums.EnvironmentType;
-
 
 public class DriverManager {
 
@@ -22,14 +22,14 @@ public class DriverManager {
 		environmentType = FileReaderManager.getInstance().getConfigReader().getEnvironment();
 	}
 
-	public static WebDriver getDriver() {
-		if (driver == null)
-			driver = createDriver();
+	public WebDriver getDriver() {
+		if (Objects.isNull(driver)) {
+			createDriver();
+		}
 		return driver;
-		
 	}
 
-	private static WebDriver  createDriver() {
+	public WebDriver createDriver() {
 		switch (environmentType) {
 		case LOCAL:
 			driver = createLocalDriver();
@@ -39,14 +39,13 @@ public class DriverManager {
 			break;
 		}
 		return driver;
-	
 
 	}
 
-	private static WebDriver  createLocalDriver() {
+	public WebDriver createLocalDriver() {
 		switch (driverType) {
 		case FIREFOX:
-			//WebDriverManager.firefoxdriver().setup();
+			// WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
 		case CHROME:
@@ -57,15 +56,14 @@ public class DriverManager {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximized");
 			driver = new ChromeDriver(options);
-			
+
 			break;
 		}
-		Driver.SetDriver(driver);
-		Driver.GetDriver().manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitWait(),
+		 Driver.SetDriver(driver);
+		 Driver.GetDriver().manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitWait(),
 				TimeUnit.SECONDS);
-		Driver.GetDriver().manage().deleteAllCookies();
 		return Driver.GetDriver();
-		
+
 	}
 
 	private static WebDriver createRemoteDriver() {
@@ -73,9 +71,11 @@ public class DriverManager {
 	}
 
 	public void closeDriver() {
-	
-		Driver.GetDriver().close();
-		Driver.GetDriver().quit();
+		if (Driver.GetDriver() != null) {
+			Driver.GetDriver().close();
+			Driver.GetDriver().quit();
+		}
+
 	}
 
 }

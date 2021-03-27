@@ -12,7 +12,6 @@
         <cucumber-picocontainer.version>4.2.0</cucumber-picocontainer.version>
 		<maven.compiler.version>3.8.1</maven.compiler.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
-		<cucumber-picocontainer.version>4.2.0</cucumber-picocontainer.version>
 	</properties>
 	<dependencies>
 		<dependency>

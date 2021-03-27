@@ -63,6 +63,7 @@ public class DriverManager {
 		Driver.SetDriver(driver);
 		Driver.GetDriver().manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitWait(),
 				TimeUnit.SECONDS);
+		Driver.GetDriver().manage().deleteAllCookies();
 		return Driver.GetDriver();
 		
 	}

@@ -24,6 +24,7 @@ public class HomePageSteps {
 	@Then("I enter credentials")
 	public void i_enter_credentials() {
 		loginPage.enterCredentilas("reach2shekhar@gmail.com", "Naukri@2021@");
+		//loginPage.enterCredentilas("77378", "Cfg@march2021");
 	}
 
 }

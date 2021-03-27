@@ -4,11 +4,11 @@ CucumberHTML.timelineItems.pushArray([
     "id": "automated-end2end-tests;verify-login-page-successfully-loaded",
     "feature": "Automated End2End Tests",
     "scenario": "Verify Login Page successfully Loaded",
-    "start": 36807318,
-    "end": 36852154,
+    "start": 45494680,
+    "end": 45513144,
     "group": 1,
     "content": "",
-    "className": "failed",
+    "className": "passed",
     "tags": ""
   }
 ]);
